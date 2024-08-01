@@ -5,22 +5,16 @@ on:
     branches: [ develop ]
     
 jobs:
-  set-envrionment:
-    runs-on: ubuntu-latest
-    environment: 
-      name: Sandbox
-
   build-and-publish:
-    needs: [set-envrionment]    
     runs-on: ubuntu-latest
-    environment: ${{ needs.set-envrionment.outputs.gh-env }}
+    environment: Sandbox
 
     steps:
-    #checkout the source code from the git repo
-    - uses: actions/checkout@v3
+    - name: Checkout this repo
+      uses: actions/checkout@v4
 
     #caches maven dependencies
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -29,7 +23,7 @@ jobs:
 
     #setup java 1.8
     - name: Set up JDK 1.8
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
         java-version: '8'
