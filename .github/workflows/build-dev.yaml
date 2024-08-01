@@ -34,17 +34,17 @@ jobs:
         distribution: 'zulu'
         java-version: '8'
 
-      - name: Publish to Exchange
-        run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
-          -DconnectedApp.clientId="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
-          -DconnectedApp.clientSecret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
+    - name: Publish to Exchange
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests \
+        -DconnectedApp.clientId="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+        -DconnectedApp.clientSecret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
 
-      - name: Deploy to CloudHub 2.0
-        run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
-          -DconnectedApp.clientId=${{ secrets.CONNECTED_APP_CLIENT_ID }} \
-          -DconnectedApp.clientSecret=${{ secrets.CONNECTED_APP_CLIENT_SECRET }} \
-          -Dmule.env=dev \
-          -Danypoint.platform.client_id=${{ secrets.AP_CLIENTID }} \
-          -Danypoint.platform.client_secret=${{ secrets.AP_CLIENTSECRET }} 
+    - name: Deploy to CloudHub 2.0
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        -DconnectedApp.clientId=${{ secrets.CONNECTED_APP_CLIENT_ID }} \
+        -DconnectedApp.clientSecret=${{ secrets.CONNECTED_APP_CLIENT_SECRET }} \
+        -Dmule.env=dev \
+        -Danypoint.platform.client_id=${{ secrets.AP_CLIENTID }} \
+        -Danypoint.platform.client_secret=${{ secrets.AP_CLIENTSECRET }} 
