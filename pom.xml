@@ -4,12 +4,11 @@
     <groupId>56c0659c-36f9-42fb-954e-5d1102559baf</groupId>
     <!-- Change to your artifact-id -->
     <artifactId>poller-data-cloud-process-impl</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>mule-application</packaging>
     <!-- Change to your name -->
-    <name>template-ch2-datacloud
-</name>
-    <description>template to deploy to CH2</description>
+    <name>poller-data-cloud-process-impl</name>
+    <description>application that synchronise data with data cloud</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -66,7 +65,7 @@
                             <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
                         </deploymentSettings>
                     </cloudhub2Deployment>
-                    <classifier>mule-application-template</classifier>
+                    <classifier>mule-application</classifier>
                 </configuration>
             </plugin>
         </plugins>
